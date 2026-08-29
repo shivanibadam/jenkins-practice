@@ -19,24 +19,26 @@ pipeline {
  		echo "Jenkins Build Number: ${BUILD_NUMBER}"
         	echo "Jenkins Job: ${JOB_NAME}"
 		sh 'cat Greetings.txt'
-sh 'mkdir -p build'
-sh 'echo "Application Build ${BUILD_NUMBER}" > build/app.txt'
+		sh 'mkdir -p build'
+		sh 'echo "Application Build ${BUILD_NUMBER}" > build/app.txt'
+		archiveArtifacts artifacts: 'build/app.txt'
             }
         }
    	
-	stage('Credentials Test') {
-    steps {
-        withCredentials([
-    usernamePassword(
-        credentialsId: 'shivani',
-        usernameVariable: 'TEST_USER',
-        passwordVariable: 'TEST_PASS'
-    )
-]) {
-    sh 'echo "Username: $TEST_USER"'
-    echo "Password is available securely"
-}
-    }
+   stage('Credentials Test') {
+   	steps {
+        	withCredentials([
+    			usernamePassword(
+        			credentialsId: 'shivani',
+        			usernameVariable: 'TEST_USER',
+        			passwordVariable: 'TEST_PASS'
+    			)
+		]) 
+		{
+    			sh 'echo "Username: $TEST_USER"'
+    			echo "Password is available securely"
+		}
+   	 }
 }
         stage('Test') {
             steps {
