@@ -22,20 +22,20 @@ pipeline {
             }
         }
    	
-	stage('Credentials Test'){
-	steps{
-		withCredentials([
-			usernamePassword(
-				'credentialsId':'shivani',
-			    	'usernameVariable':'shivani',
-				'passwordVariable':'shivani'
-			)
-		])
-	{
-   	echo "Username: ${TEST_USER}"
-        echo "Password is available securely"
-	}
-
+	stage('Credentials Test') {
+    steps {
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'shivani',
+                usernameVariable: 'TEST_USER',
+                passwordVariable: 'TEST_PASS'
+            )
+        ]) {
+            echo "Username: ${TEST_USER}"
+            echo "Password is available securely"
+        }
+    }
+}
         stage('Test') {
             steps {
                 echo 'Test stage started'
