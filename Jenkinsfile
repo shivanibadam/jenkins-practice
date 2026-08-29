@@ -19,6 +19,8 @@ pipeline {
  		echo "Jenkins Build Number: ${BUILD_NUMBER}"
         	echo "Jenkins Job: ${JOB_NAME}"
 		sh 'cat Greetings.txt'
+sh 'mkdir -p build'
+sh 'echo "Application Build ${BUILD_NUMBER}" > build/app.txt'
             }
         }
    	
@@ -48,4 +50,13 @@ pipeline {
             }
         }
     }
+
+post{
+	always{
+		cleanWs()
+	}
+	success{
+		echo 'pipeline completed successfully'
+	}
+}
 }
