@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building ${APP_NAME}"
-		echo "Environment ${ENVIRONMENT}"
+		echo "Deplyment Environment: ${params.DEPLOY_ENV}"
  		echo "Jenkins Build Number: ${BUILD_NUMBER}"
         	echo "Jenkins Job: ${JOB_NAME}"
 		sh 'cat Greetings.txt'
