@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    parameters {
+    choice(
+        name: 'DEPLOY_ENV',
+        choices: ['dev', 'qa', 'prod'],
+        description: 'Choose deployment environment'
+    )
+}
     environment {
 	APP_NAME = 'jenkins-practice-app'
         ENVIRONMENT = 'dev'
