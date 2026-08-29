@@ -9,6 +9,8 @@ pipeline {
             steps {
                 echo "Building ${APP_NAME}"
 		echo "Environment ${ENVIRONMENT}"
+ 		echo "Jenkins Build Number: ${BUILD_NUMBER}"
+        	echo "Jenkins Job: ${JOB_NAME}"
 		sh 'cat Greetings.txt'
             }
         }
