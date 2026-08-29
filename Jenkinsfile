@@ -1,10 +1,14 @@
 pipeline {
     agent any
-
+    environment {
+	APP_NAME = 'jenkins-practice-app'
+        ENVIRONMENT = 'dev'
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'Build stage started'
+                echo 'Building ${APP_NAME}'
+		echo 'Environment ${ENVIRONMENT}
 		sh 'cat Greetings.txt'
             }
         }
