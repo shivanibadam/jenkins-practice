@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building ${APP_NAME}'
-		echo 'Environment ${ENVIRONMENT}
+		echo 'Environment ${ENVIRONMENT}'
 		sh 'cat Greetings.txt'
             }
         }
