@@ -21,6 +21,20 @@ pipeline {
 		sh 'cat Greetings.txt'
             }
         }
+   	
+	stage('Credentials Test'){
+	steps{
+		withCredentials([
+			usernamePassword(
+				'credentialsId':'shivani,
+			    	'usernameVariable':'shivani',
+				'passwordVariable':'shivani'
+			)
+		])
+	{
+   	echo "Username: ${TEST_USER}"
+        echo "Password is available securely"
+	}
 
         stage('Test') {
             steps {
