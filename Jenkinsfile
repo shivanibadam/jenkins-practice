@@ -17,7 +17,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		 sh 'mvn -version'
+		sh 'mvn -version'
+		sh 'mvn clean package'
                 echo "Building ${APP_NAME}"
 		echo "Deplyment Environment: ${params.DEPLOY_ENV}"
  		echo "Jenkins Build Number: ${BUILD_NUMBER}"
