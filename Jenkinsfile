@@ -1,5 +1,8 @@
 pipeline {
     agent any
+	tools {
+    		maven 'Maven-3'
+		}
     parameters {
     choice(
         name: 'DEPLOY_ENV',
