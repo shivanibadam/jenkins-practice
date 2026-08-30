@@ -46,11 +46,12 @@ pipeline {
    	 }
 }
         stage('Test') {
-            steps {
-                echo 'Test stage started'
-sh 'mvn test'
-            }
-        }
+   		steps {
+        		echo 'Running unit tests'
+        		sh 'mvn test'
+        		junit 'target/surefire-reports/*.xml'
+    		}
+	}
 
         stage('Deploy') {
             steps {
