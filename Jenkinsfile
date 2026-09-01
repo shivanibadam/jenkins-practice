@@ -53,8 +53,13 @@ pipeline {
     }
 }
         stage('Deploy') {
-            steps {
-                echo 'Deploy stage started'
+	when{
+		expression{
+			params.DEPLOY_ENV == 'prod 	 	
+		}
+	}
+        steps {
+		 echo 'Deploying application to production'
             }
         }
     }
