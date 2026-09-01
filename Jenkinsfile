@@ -66,7 +66,7 @@ pipeline {
 			}
 		}
 		steps {
-			input message: 'Deploy to production?, ok:'Approve'
+			input message: 'Deploy to production?', ok:'Approve'
 		}
 	}
 
